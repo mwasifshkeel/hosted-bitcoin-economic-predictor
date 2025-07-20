@@ -29,10 +29,6 @@ yarn-error.log*
 # Vercel
 .vercel
 
-# TypeScript
-*.tsbuildinfo
-next-env.d.ts
-
 # Python
 __pycache__/
 *.py[cod]
@@ -87,7 +83,6 @@ models/*.onnx
 
 # Data files
 *.csv
-*.json
 data/
 datasets/
 
