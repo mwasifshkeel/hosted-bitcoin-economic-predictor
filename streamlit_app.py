@@ -111,6 +111,11 @@ def load_custom_css():
     .stDecoration {display: none;}
     .stToolbar {display: none;}
     
+    /* Remove default margins and padding */
+    .block-container > div {
+        padding-top: 0rem;
+    }
+    
     /* Header - Exact match */
     .app-header {
         background: rgba(255, 255, 255, 0.1);
@@ -121,6 +126,7 @@ def load_custom_css():
         position: sticky;
         top: 0;
         z-index: 50;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
     
     .header-content {
@@ -140,6 +146,8 @@ def load_custom_css():
         align-items: center;
         justify-content: center;
         box-shadow: 0 8px 32px rgba(247, 147, 26, 0.3);
+        width: 3rem;
+        height: 3rem;
     }
     
     .header-text h1 {
@@ -164,7 +172,7 @@ def load_custom_css():
     /* Hero Section */
     .hero-section {
         text-align: center;
-        padding: 4rem 0;
+        padding: 3rem 2rem 4rem 2rem;
         position: relative;
     }
     
@@ -184,7 +192,7 @@ def load_custom_css():
     }
     
     .hero-title {
-        font-size: clamp(3rem, 8vw, 4rem);
+        font-size: clamp(2.5rem, 6vw, 4rem);
         font-weight: 900;
         background: linear-gradient(135deg, #ffffff 0%, #bfdbfe 30%, #f7931a 100%);
         -webkit-background-clip: text;
@@ -195,10 +203,10 @@ def load_custom_css():
     }
     
     .hero-subtitle {
-        font-size: 1.25rem;
+        font-size: 1.125rem;
         color: #bfdbfe;
         max-width: 48rem;
-        margin: 0 auto 3rem auto;
+        margin: 0 auto 2rem auto;
         line-height: 1.6;
         font-weight: 400;
     }
@@ -214,6 +222,7 @@ def load_custom_css():
         position: relative;
         overflow: hidden;
         margin-bottom: 2rem;
+        height: fit-content;
     }
     
     .card-header {
@@ -221,27 +230,32 @@ def load_custom_css():
         align-items: center;
         justify-content: space-between;
         margin-bottom: 2rem;
+        flex-wrap: wrap;
+        gap: 1rem;
     }
     
     .card-title {
         display: flex;
         align-items: center;
         gap: 1rem;
+        flex: 1;
     }
     
     .card-icon {
         padding: 0.75rem;
         border-radius: 1rem;
         color: white;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         display: flex;
         align-items: center;
         justify-content: center;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        min-width: 3rem;
+        height: 3rem;
     }
     
     .card-title-text {
-        font-size: 1.875rem;
+        font-size: 1.5rem;
         font-weight: 800;
         color: white;
         margin: 0;
@@ -250,13 +264,14 @@ def load_custom_css():
     .card-badge {
         background: rgba(255, 255, 255, 0.1);
         border-radius: 2rem;
-        padding: 0.25rem 0.75rem;
+        padding: 0.5rem 1rem;
         font-size: 0.75rem;
         color: #bfdbfe;
         font-weight: 600;
         display: flex;
         align-items: center;
-        gap: 0.25rem;
+        gap: 0.5rem;
+        white-space: nowrap;
     }
     
     /* Input Labels with Icons */
@@ -268,54 +283,66 @@ def load_custom_css():
         font-weight: 600;
         font-size: 0.875rem;
         gap: 0.5rem;
+        flex-wrap: wrap;
     }
     
     .label-icon {
         padding: 0.25rem;
         border-radius: 0.5rem;
         color: white;
-        font-size: 1rem;
+        font-size: 0.875rem;
         display: flex;
         align-items: center;
         justify-content: center;
+        min-width: 1.5rem;
+        height: 1.5rem;
     }
     
-    /* Form Styles - Exact match */
-    .stTextInput input, .stNumberInput input, .stTextArea textarea {
+    /* Form Styles - Fixed */
+    .stTextInput > div > div > input, 
+    .stNumberInput > div > div > input, 
+    .stTextArea > div > div > textarea {
         background: rgba(255, 255, 255, 0.1) !important;
         backdrop-filter: blur(12px) !important;
         border: 1px solid rgba(255, 255, 255, 0.2) !important;
         border-radius: 1rem !important;
         color: white !important;
         font-size: 1rem !important;
-        padding: 1rem 1rem !important;
+        padding: 1rem !important;
         font-weight: 500 !important;
         transition: all 0.3s ease !important;
-        height: 3.5rem !important;
+        min-height: 3rem !important;
+        box-sizing: border-box !important;
     }
     
-    .stTextArea textarea {
-        height: 6rem !important;
+    .stTextArea > div > div > textarea {
+        min-height: 5rem !important;
+        resize: vertical !important;
     }
     
-    .stTextInput input::placeholder, .stNumberInput input::placeholder, .stTextArea textarea::placeholder {
+    .stTextInput > div > div > input::placeholder, 
+    .stNumberInput > div > div > input::placeholder, 
+    .stTextArea > div > div > textarea::placeholder {
         color: #94a3b8 !important;
-        opacity: 1 !important;
+        opacity: 0.8 !important;
     }
     
-    .stTextInput input:focus, .stNumberInput input:focus, .stTextArea textarea:focus {
+    .stTextInput > div > div > input:focus, 
+    .stNumberInput > div > div > input:focus, 
+    .stTextArea > div > div > textarea:focus {
         border-color: #f7931a !important;
-        box-shadow: 0 0 0 3px rgba(247, 147, 26, 0.1) !important;
+        box-shadow: 0 0 0 3px rgba(247, 147, 26, 0.2) !important;
         background: rgba(255, 255, 255, 0.15) !important;
+        outline: none !important;
     }
     
-    /* Button Styles - Exact match */
-    .stButton button {
+    /* Button Styles - Fixed */
+    .stButton > button {
         background: linear-gradient(135deg, #f7931a 0%, #ff6b35 100%) !important;
         color: white !important;
         border: none !important;
         border-radius: 1rem !important;
-        padding: 1.25rem 1.5rem !important;
+        padding: 1rem 1.5rem !important;
         font-size: 1.125rem !important;
         font-weight: 700 !important;
         width: 100% !important;
@@ -325,25 +352,51 @@ def load_custom_css():
         letter-spacing: normal !important;
         position: relative !important;
         overflow: hidden !important;
-        height: 4rem !important;
+        min-height: 3.5rem !important;
+        margin-top: 1rem !important;
+        cursor: pointer !important;
     }
     
-    .stButton button:hover {
-        transform: translateY(-2px) scale(1.02) !important;
-        box-shadow: 0 20px 40px -3px rgba(247, 147, 26, 0.5) !important;
+    .stButton > button:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 20px 40px -3px rgba(247, 147, 26, 0.6) !important;
         background: linear-gradient(135deg, #e8850e 0%, #ea580c 100%) !important;
+    }
+    
+    .stButton > button:active {
+        transform: translateY(0px) !important;
+    }
+    
+    /* Form layout fixes */
+    .stForm {
+        border: none !important;
+        background: transparent !important;
+    }
+    
+    /* Column spacing fixes */
+    .stColumn {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+    
+    .stColumn:first-child {
+        padding-left: 0 !important;
+    }
+    
+    .stColumn:last-child {
+        padding-right: 0 !important;
     }
     
     /* Empty State */
     .empty-state {
         text-align: center;
-        padding: 4rem 2rem;
+        padding: 3rem 2rem;
         color: #bfdbfe;
     }
     
     .empty-state-icon {
-        font-size: 6rem;
-        margin-bottom: 1.5rem;
+        font-size: 4rem;
+        margin-bottom: 1rem;
         color: #60a5fa;
     }
     
@@ -351,12 +404,13 @@ def load_custom_css():
         color: white;
         font-size: 1.25rem;
         font-weight: 700;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
     }
     
     .empty-state p {
         color: #94a3b8;
         margin: 0;
+        font-size: 1rem;
     }
     
     /* Loading Animation */
@@ -365,14 +419,14 @@ def load_custom_css():
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 4rem 2rem;
+        padding: 3rem 2rem;
         text-align: center;
     }
     
     .loading-spinner {
-        font-size: 3rem;
+        font-size: 2.5rem;
         margin-bottom: 1rem;
-        animation: spin 1s linear infinite;
+        animation: spin 2s linear infinite;
     }
     
     @keyframes spin {
@@ -387,19 +441,19 @@ def load_custom_css():
         padding: 2rem;
         text-align: center;
         color: white;
-        margin: 2rem 0;
+        margin: 1rem 0 2rem 0;
         position: relative;
         overflow: hidden;
-        box-shadow: 0 25px 50px -12px rgba(247, 147, 26, 0.4);
+        box-shadow: 0 25px 50px -12px rgba(247, 147, 26, 0.5);
     }
     
     .prediction-main-card::before {
         content: '';
         position: absolute;
-        top: -50%;
-        right: -50%;
-        width: 8rem;
-        height: 8rem;
+        top: -3rem;
+        right: -3rem;
+        width: 6rem;
+        height: 6rem;
         background: rgba(255, 255, 255, 0.1);
         border-radius: 50%;
         z-index: 0;
@@ -408,10 +462,10 @@ def load_custom_css():
     .prediction-main-card::after {
         content: '';
         position: absolute;
-        bottom: -25%;
-        left: -25%;
-        width: 6rem;
-        height: 6rem;
+        bottom: -2rem;
+        left: -2rem;
+        width: 4rem;
+        height: 4rem;
         background: rgba(255, 255, 255, 0.1);
         border-radius: 50%;
         z-index: 0;
@@ -423,11 +477,125 @@ def load_custom_css():
     }
     
     .prediction-price {
-        font-size: clamp(3rem, 8vw, 4rem);
+        font-size: clamp(2.5rem, 6vw, 3.5rem);
         font-weight: 900;
         margin: 1rem 0;
         line-height: 1;
         text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Team Cards - Fixed */
+    .team-card {
+        text-align: center;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        margin-bottom: 1rem;
+    }
+    
+    .team-card:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+    }
+    
+    .team-avatar {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1.125rem;
+        margin: 0 auto 1rem auto;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .team-name {
+        color: white;
+        font-weight: 600;
+        font-size: 1rem;
+        margin: 0 0 0.5rem 0;
+    }
+    
+    .team-role {
+        color: #bfdbfe;
+        font-size: 0.875rem;
+        margin: 0;
+        line-height: 1.4;
+    }
+    
+    /* Features Section - Fixed spacing */
+    .features-section {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+        padding: 4rem 2rem;
+        margin: 3rem 0;
+        border-radius: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .feature-card {
+        border-radius: 1rem;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    }
+    
+    .feature-icon {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        width: 4rem;
+        height: 4rem;
+        margin: 0 auto 1.5rem auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+    }
+    
+    .feature-title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: white;
+        margin-bottom: 1rem;
+    }
+    
+    .feature-description {
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.6;
+        margin: 0;
+        font-size: 0.95rem;
+    }
+    
+    /* Footer improvements */
+    .app-footer {
+        padding: 3rem 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 3rem;
+    }
+    
+    /* Metrics styling */
+    .metric-container {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 1rem;
+        padding: 1rem;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     /* Responsive adjustments */
@@ -442,7 +610,37 @@ def load_custom_css():
         }
         
         .hero-section {
-            padding: 2rem 0;
+            padding: 2rem 1rem 3rem 1rem;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1rem;
+        }
+        
+        .card-header {
+            flex-direction: column;
+            text-align: center;
+            gap: 0.5rem;
+        }
+        
+        .card-title {
+            justify-content: center;
+        }
+        
+        .features-section {
+            padding: 3rem 1rem;
+        }
+        
+        .prediction-main-card {
+            padding: 1.5rem;
+        }
+        
+        .stColumn {
+            margin-bottom: 1rem;
         }
     }
     </style>
@@ -505,7 +703,7 @@ def main():
     col1, col2 = st.columns([1, 1], gap="large")
     
     with col1:
-        # Market Data Input Card - Exact match
+        # Market Data Input Card - Fixed styling
         st.markdown("""
         <div class="glass-card">
             <div class="card-header">
@@ -520,7 +718,6 @@ def main():
                     <span>AI Powered</span>
                 </div>
             </div>
-        </div>
         """, unsafe_allow_html=True)
         
         with st.form("prediction_form", clear_on_submit=False):
@@ -535,7 +732,8 @@ def main():
                 </div>
                 """, unsafe_allow_html=True)
                 open_price = st.number_input("", min_value=0.01, value=45000.0, step=100.0, 
-                                           label_visibility="collapsed", key="open_input")
+                                           label_visibility="collapsed", key="open_input",
+                                           help="The opening price of Bitcoin for the trading period")
             
             with col1_2:
                 st.markdown("""
@@ -545,7 +743,10 @@ def main():
                 </div>
                 """, unsafe_allow_html=True)
                 high_price = st.number_input("", min_value=0.01, value=46000.0, step=100.0, 
-                                           label_visibility="collapsed", key="high_input")
+                                           label_visibility="collapsed", key="high_input",
+                                           help="The highest price reached during the trading period")
+            
+            st.markdown("<div style='margin-bottom: 1rem;'></div>", unsafe_allow_html=True)
             
             col1_3, col1_4 = st.columns(2)
             
@@ -557,7 +758,8 @@ def main():
                 </div>
                 """, unsafe_allow_html=True)
                 low_price = st.number_input("", min_value=0.01, value=44000.0, step=100.0, 
-                                          label_visibility="collapsed", key="low_input")
+                                          label_visibility="collapsed", key="low_input",
+                                          help="The lowest price reached during the trading period")
             
             with col1_4:
                 st.markdown("""
@@ -567,7 +769,10 @@ def main():
                 </div>
                 """, unsafe_allow_html=True)
                 volume = st.number_input("", min_value=0.0, value=1500.0, step=100.0, 
-                                       label_visibility="collapsed", key="volume_input")
+                                       label_visibility="collapsed", key="volume_input",
+                                       help="Trading volume in Bitcoin during the period")
+            
+            st.markdown("<div style='margin-bottom: 1rem;'></div>", unsafe_allow_html=True)
             
             st.markdown("""
             <div class="input-label">
@@ -576,17 +781,19 @@ def main():
                 <span style="color: #fbbf24; margin-left: 0.5rem; font-size: 0.75rem;">📊 Sentiment calculated automatically</span>
             </div>
             """, unsafe_allow_html=True)
-            news_headline = st.text_area("", height=80, label_visibility="collapsed", 
+            news_headline = st.text_area("", height=100, label_visibility="collapsed", 
                                        placeholder="Enter relevant news headline for sentiment analysis...",
-                                       key="news_input")
+                                       key="news_input",
+                                       help="Enter a news headline to incorporate sentiment analysis into the prediction")
             
-            st.markdown("<br>", unsafe_allow_html=True)
             submitted = st.form_submit_button("🚀 Predict Bitcoin Price")
+        
+        st.markdown("</div>", unsafe_allow_html=True)  # Close glass-card
     
     with col2:
-        # Prediction Results Card - Show empty state by default
+        # Prediction Results Card - Fixed styling
         st.markdown("""
-        <div class="glass-card">
+        <div class="glass-card" style="min-height: 400px;">
             <div class="card-header">
                 <div class="card-title">
                     <div class="card-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
@@ -595,7 +802,6 @@ def main():
                     <h2 class="card-title-text">Prediction Results</h2>
                 </div>
             </div>
-        </div>
         """, unsafe_allow_html=True)
         
         if submitted:
@@ -747,10 +953,10 @@ def main():
             </div>
             """, unsafe_allow_html=True)
 
-    # Features Section - exact match
+    # Features Section - Fixed layout
     st.markdown("""
-    <div style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); padding: 5rem 2rem; margin: 4rem 0; border-radius: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1);">
-        <div style="text-align: center; margin-bottom: 4rem;">
+    <div class="features-section">
+        <div style="text-align: center; margin-bottom: 3rem;">
             <h2 style="font-size: 2.5rem; font-weight: 800; color: white; margin-bottom: 1rem;">
                 Powered by Advanced AI
             </h2>
@@ -758,21 +964,20 @@ def main():
                 Our sophisticated ensemble model combines multiple algorithms for superior accuracy
             </p>
         </div>
+    </div>
     """, unsafe_allow_html=True)
     
-    # Feature cards - exact match  
+    # Feature cards - Fixed layout
     feat_col1, feat_col2, feat_col3 = st.columns(3, gap="large")
     
     with feat_col1:
         st.markdown("""
-        <div style="background: linear-gradient(135deg, #f7931a 0%, #ff6b35 100%); border-radius: 1rem; padding: 2rem; text-align: center; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); transition: transform 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-            <div style="background: rgba(255, 255, 255, 0.2); border-radius: 50%; width: 5rem; height: 5rem; margin: 0 auto 1.5rem auto; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">
-                🧠
+        <div class="feature-card" style="background: linear-gradient(135deg, #f7931a 0%, #ff6b35 100%);">
+            <div>
+                <div class="feature-icon">🧠</div>
+                <h3 class="feature-title">Machine Learning</h3>
             </div>
-            <h3 style="font-size: 1.5rem; font-weight: 800; color: white; margin-bottom: 1rem;">
-                Machine Learning
-            </h3>
-            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.6; margin: 0;">
+            <p class="feature-description">
                 Ensemble model combining Random Forest, XGBoost, and Ridge Regression for optimal predictions
             </p>
         </div>
@@ -780,14 +985,12 @@ def main():
     
     with feat_col2:
         st.markdown("""
-        <div style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); border-radius: 1rem; padding: 2rem; text-align: center; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); transition: transform 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-            <div style="background: rgba(255, 255, 255, 0.2); border-radius: 50%; width: 5rem; height: 5rem; margin: 0 auto 1.5rem auto; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">
-                💾
+        <div class="feature-card" style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);">
+            <div>
+                <div class="feature-icon">💾</div>
+                <h3 class="feature-title">Economic Data</h3>
             </div>
-            <h3 style="font-size: 1.5rem; font-weight: 800; color: white; margin-bottom: 1rem;">
-                Economic Data
-            </h3>
-            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.6; margin: 0;">
+            <p class="feature-description">
                 Trained on comprehensive economic indicators with automated news sentiment analysis
             </p>
         </div>
@@ -795,22 +998,18 @@ def main():
     
     with feat_col3:
         st.markdown("""
-        <div style="background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%); border-radius: 1rem; padding: 2rem; text-align: center; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); transition: transform 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-            <div style="background: rgba(255, 255, 255, 0.2); border-radius: 50%; width: 5rem; height: 5rem; margin: 0 auto 1.5rem auto; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">
-                ⚡
+        <div class="feature-card" style="background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);">
+            <div>
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Real-time</h3>
             </div>
-            <h3 style="font-size: 1.5rem; font-weight: 800; color: white; margin-bottom: 1rem;">
-                Real-time
-            </h3>
-            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.6; margin: 0;">
+            <p class="feature-description">
                 Get instant predictions with high confidence scores based on current market conditions
             </p>
         </div>
         """, unsafe_allow_html=True)
     
-    st.markdown("</div>", unsafe_allow_html=True)  # Close features section
-    
-    # Footer - exact match
+    # Footer section - Fixed layout
     st.markdown("""
     <div class="app-footer">
         <div style="text-align: center; margin-bottom: 2rem;">
@@ -825,7 +1024,9 @@ def main():
         </div>
     """, unsafe_allow_html=True)
     
-    # Team section - exact match
+    # Team section - Fixed cards
+    st.markdown("<h4 style='text-align: center; color: white; font-size: 1.125rem; font-weight: 700; margin-bottom: 2rem;'>Meet the Team</h4>", unsafe_allow_html=True)
+    
     team_col1, team_col2, team_col3 = st.columns(3, gap="large")
     
     with team_col1:
@@ -873,7 +1074,6 @@ def main():
                 🔗 View Project on GitHub
             </a>
         </div>
-    </div>
     """, unsafe_allow_html=True)
 
 if __name__ == "__main__":

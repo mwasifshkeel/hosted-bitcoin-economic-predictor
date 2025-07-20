@@ -1,130 +1,127 @@
-# Bitcoin Price Prediction Web Application
+# Bitcoin Price Predictor - Streamlit App
 
-A full-stack Next.js web application that deploys machine learning models for Bitcoin price prediction using economic indicators.
+An AI-powered Bitcoin price prediction application built with Streamlit and ensemble machine learning models.
 
 ## Features
 
-- **Interactive Prediction Interface**: Enter market data and get instant price predictions
-- **Real-time Results**: Display predicted prices with confidence intervals
-- **Model Performance Metrics**: View RMSE: 97.08, MAE: 52.16, and R²: 0.995 scores
-- **Feature Importance**: Understand which factors most influence predictions
-- **Responsive Design**: Works on desktop and mobile devices
-- **Full-Stack Next.js**: Backend API and frontend in a single application
-
-## Tech Stack
-
-- **Framework**: Next.js 14 with TypeScript
-- **Frontend**: React, Tailwind CSS
-- **Backend**: Next.js API Routes
-- **Styling**: Tailwind CSS with custom Bitcoin theme
-- **Icons**: Lucide React
-
-## Setup Instructions
-
-### Prerequisites
-
-- Node.js (v18+)
-
-### 1. Install Dependencies
-
-```bash
-npm install
-```
-
-### 2. Run the Application
-
-```bash
-# Development mode
-npm run dev
-
-# Production build
-npm run build
-npm start
-```
-
-### 3. Access the Application
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## API Endpoints
-
-- `GET /api/health` - Health check
-- `POST /api/predict` - Get price predictions
-
-## Input Parameters
-
-- **Open Price**: Bitcoin opening price (USD)
-- **High Price**: Highest price in period (USD)  
-- **Low Price**: Lowest price in period (USD)
-- **Volume**: Trading volume (BTC)
-- **News Headline**: Optional news text (sentiment calculated automatically)
-
-## Output
-
-- **Predicted Price**: Model's price prediction
-- **Confidence**: Prediction confidence score
-- **Calculated Sentiment**: Automatically computed sentiment score from news
-- **Performance Metrics**: Model accuracy metrics (RMSE: 97.08, MAE: 52.16, R²: 0.995)
-- **Feature Importance**: Most influential factors
-
-## Architecture
-
-### Frontend (React/Next.js)
-- `app/page.tsx` - Main application page
-- `components/` - Reusable UI components
-- Responsive design with Tailwind CSS
-
-### Backend (Next.js API Routes)
-- `app/api/predict/route.ts` - Prediction endpoint
-- `app/api/health/route.ts` - Health check endpoint
-- Feature engineering and model logic
-
-## Customization
-
-### Styling
-- Modify `tailwind.config.js` for custom colors/themes
-- Update components for different layouts
-
-### Prediction Logic
-- Update feature engineering in `app/api/predict/route.ts`
-- Integrate with actual ML models if available
-
-### UI Components
-- Customize forms in `components/PredictionForm.tsx`
-- Modify results display in `components/PredictionResults.tsx`
-
-## Deployment
-
-### Vercel (Recommended)
-```bash
-npm run build
-# Deploy to Vercel
-```
-
-### Other Platforms
-- Netlify
-- Railway
-- AWS/GCP/Azure
-
-## Benefits of Next.js Approach
-
-1. **Unified Stack**: Single technology for frontend and backend
-2. **Better Performance**: Optimized bundling and server-side rendering
-3. **Easier Deployment**: Deploy entire app as one unit
-4. **Type Safety**: Full TypeScript support across stack
-5. **Built-in Optimization**: Image optimization, code splitting, etc.
+- 🎯 Real-time Bitcoin price prediction
+- 📊 Interactive market data input form
+- 🤖 Ensemble ML models (Random Forest, XGBoost, Ridge)
+- 📈 Automatic sentiment analysis from news headlines
+- 📋 Model performance metrics and feature importance
+- 🎨 Modern, responsive UI
 
 ## Team
 
-- Muhammad Muntazar
-- Hafiz Abdul Basit 
-- Muhammad Wasif Shakeel
+- **Muhammad Muntazar** - Data Acquisition & Preprocessing
+- **Hafiz Abdul Basit** - Data Transformation Engineer  
+- **Muhammad Wasif Shakeel** - AI Model Engineer
+
+## Local Development
+
+### Prerequisites
+
+- Python 3.8 or higher
+- pip package manager
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/mwasifshkeel/bitcoin-economic-predictor
+cd bitcoin-economic-predictor/ProjectSite
+```
+
+2. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+3. Run the Streamlit app
+```bash
+streamlit run streamlit_app.py
+```
+
+The app will open in your browser at `http://localhost:8501`
+
+## Deployment
+
+### Streamlit Cloud Deployment
+
+1. Fork this repository to your GitHub account
+
+2. Go to [share.streamlit.io](https://share.streamlit.io)
+
+3. Click "New app" and connect your GitHub repository
+
+4. Set the following:
+   - Repository: `your-username/bitcoin-economic-predictor`
+   - Branch: `main`
+   - Main file path: `ProjectSite/streamlit_app.py`
+
+5. Click "Deploy!"
+
+### Heroku Deployment
+
+1. Create a `Procfile`:
+```
+web: streamlit run streamlit_app.py --server.port=$PORT --server.address=0.0.0.0
+```
+
+2. Deploy to Heroku:
+```bash
+heroku create your-app-name
+git push heroku main
+```
+
+### Docker Deployment
+
+1. Create `Dockerfile`:
+```dockerfile
+FROM python:3.9-slim
+
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY . .
+
+EXPOSE 8501
+
+CMD ["streamlit", "run", "streamlit_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+```
+
+2. Build and run:
+```bash
+docker build -t bitcoin-predictor .
+docker run -p 8501:8501 bitcoin-predictor
+```
+
+## Model Information
+
+- **Algorithm**: Ensemble of Random Forest, XGBoost, and Ridge Regression
+- **Features**: OHLCV data + engineered features + sentiment analysis
+- **Performance**: RMSE: 97.08, MAE: 52.16, R²: 0.995
+- **Confidence Scoring**: Based on model agreement and input quality
+
+## Usage
+
+1. Enter market data:
+   - Open Price (USD)
+   - High Price (USD)  
+   - Low Price (USD)
+   - Volume (BTC)
+
+2. Optionally add a news headline for sentiment analysis
+
+3. Click "Predict Bitcoin Price"
+
+4. View prediction results with confidence scores and feature importance
+
+## API Endpoints
+
+The app runs entirely in Streamlit with no separate API endpoints needed.
 
 ## License
 
-Academic project for NUST Introduction to Data Science course.
-- Muhammad Wasif Shakeel
-
-## License
-
-Academic project for NUST Introduction to Data Science course.
+This project is for educational purposes as part of NUST's Data Science curriculum.
