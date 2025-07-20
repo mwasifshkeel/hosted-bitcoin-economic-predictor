@@ -79,7 +79,6 @@ venv.bak/
 
 # Machine Learning Models (large files)
 *.h5
-model/*.pkl
 *.joblib
 *.sav
 models/bitcoin_model/
